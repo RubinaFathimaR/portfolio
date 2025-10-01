@@ -1,153 +1,425 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio | [Rubina Fathima R]</title>
-  <style>
-    /* Google Fonts */
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio [Rubina Fathima]</title>
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-      scroll-behavior: smooth;
-    }
+    <!-- Load Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-    body {
-      background: linear-gradient(135deg, #ffc1e3, #ffb6c1, #a1c4fd);
-      background-size: 400% 400%;
-      animation: gradientBG 12s ease infinite;
-      color: #333;
-    }
+    <!-- Load Font Awesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-    @keyframes gradientBG {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+    <style>
+        /* Define custom colors and styling based on the provided design screenshots */
+        :root {
+            --pink-background: #fbe8f1;
+            --pink-card-border: #ffeaf0;
+            --pink-primary: #eb4a8c; /* Bright Pink Accent */
+            /* Removed dark card colors, now using light card theme for Hero section */
+            --card-shadow: rgba(235, 74, 140, 0.15); /* Soft shadow for white cards */
+        }
 
-    header {
-      text-align: center;
-      padding: 60px 20px 40px;
-      color: #fff;
-    }
+        body {
+            background-color: var(--pink-background);
+            font-family: 'Inter', sans-serif;
+            color: #333; /* Default text color */
+        }
 
-    header img {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      border: 4px solid white;
-      margin-bottom: 20px;
-      object-fit: cover;
-    }
+        /* Generic styling for all main white content cards */
+        .card-wrapper {
+            background-color: white;
+            border-radius: 1.5rem; /* Highly rounded corners */
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 10px var(--card-shadow); 
+            border: 1px solid var(--pink-card-border);
+            transition: all 0.2s ease-in-out;
+        }
 
-    header h1 {
-      font-size: 2.2rem;
-      margin-bottom: 10px;
-    }
+        .card-wrapper:hover {
+            box-shadow: 0 6px 15px rgba(235, 74, 140, 0.2);
+            transform: translateY(-2px);
+        }
 
-    header p {
-      font-size: 1.1rem;
-      opacity: 0.9;
-    }
+        /* Styling for the bright pink section titles */
+        .pink-title {
+            color: var(--pink-primary);
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
 
-    section {
-      max-width: 900px;
-      margin: 60px auto;
-      padding: 30px;
-      background: rgba(255, 255, 255, 0.85);
-      border-radius: 16px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
-    }
+        /* Skill tag (pill) styling with pink border */
+        .skill-tag {
+            display: inline-block;
+            background-color: white;
+            color: var(--pink-primary);
+            border: 1px solid var(--pink-primary);
+            border-radius: 9999px;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.875rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            transition: all 0.2s ease-in-out;
+        }
 
-    section:hover {
-      transform: translateY(-5px);
-    }
+        .skill-tag:hover {
+            background-color: var(--pink-primary);
+            color: white;
+            cursor: pointer;
+            transform: translateY(-1px);
+        }
 
-    section h2 {
-      font-size: 1.8rem;
-      margin-bottom: 15px;
-      color: #b30059;
-    }
+        /* Contact Icon Styling */
+        .contact-icon-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+        }
 
-    ul {
-      list-style: none;
-      padding-left: 0;
-    }
+        .contact-icon-wrapper:hover {
+            transform: scale(1.1);
+        }
 
-    ul li {
-      margin-bottom: 10px;
-    }
+        .contact-icon-circle {
+            background-color: var(--pink-primary);
+            border-radius: 9999px;
+            width: 3.5rem;
+            height: 3.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.75rem;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
 
-    .contact a {
-      color: #b30059;
-      text-decoration: none;
-      font-weight: 500;
-      display: block;
-      margin: 5px 0;
-    }
+        /* Hero Card Styling (Now White) */
+        .hero-card { /* Changed from .hero-dark-card */
+            background-color: white; /* Changed from dark to white */
+            border: 2px solid var(--pink-card-border);
+            border-radius: 1.5rem;
+            padding: 2.5rem 3rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            position: relative;
+            box-shadow: 0 8px 20px var(--card-shadow); /* Soft shadow */
+            flex-wrap: wrap;
+            justify-content: center;
+            text-align: center;
+        }
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      color: white;
-      font-size: 0.9rem;
-      opacity: 0.8;
-    }
-  </style>
+        /* Avatar Wrapper for CIRCULAR Image */
+        .hero-avatar-wrapper {
+            background-color: white;
+            border: 2px solid var(--pink-primary); /* Pink border for the frame */
+            border-radius: 9999px; /* Make it perfectly circular */
+            padding: 0.25rem; /* Small padding for the frame effect */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 6.5rem; /* Larger frame */
+            height: 6.5rem; /* Larger frame */
+            margin-right: 2rem;
+            flex-shrink: 0;
+            overflow: hidden; /* Ensures image stays within the circle */
+        }
+        
+        /* Responsive adjustments for mobile */
+        @media (max-width: 768px) {
+            .hero-avatar-wrapper {
+                margin-right: 0;
+                margin-bottom: 1.5rem;
+            }
+            .hero-card { /* Updated class name */
+                flex-direction: column;
+            }
+            .hero-text {
+                text-align: center;
+            }
+        }
+
+        .hero-text {
+            flex-grow: 1;
+            text-align: left;
+        }
+        .hero-name {
+            color: var(--pink-primary); /* CHANGED: Name color set to pink */
+            font-style: oblique; /* CHANGED: Name set to italic */
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        .hero-tagline {
+            color: var(--pink-primary);
+            font-size: 1.125rem;
+            font-weight: 500;
+        }
+
+        /* NEW: Style for all navigation links (set to pink) */
+        .main-nav a {
+            color: var(--pink-primary);
+        }
+
+        /* REMOVED .hero-bow-icon CSS as the element was deleted */
+    </style>
 </head>
 <body>
-  <header>
-    <!-- 👤 Replace with your image -->
-    <img src="profile.jpeg" alt="Your Photo">
-    <h1>RUBINA FATHIMA R</h1>
-    <p>Cybersecurity Enthusiast | Tech Explorer | Creative Learner</p>
-  </header>
+    <div class="container mx-auto p-4 max-w-4xl">
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>
-      I am a cybersecurity student with a strong interest in technology, problem-solving, and digital security. Beyond academics, I enjoy exploring creative outlets like public speaking and photography, which help me bring a unique perspective to my technical journey. My goal is to contribute to impactful projects in cybersecurity while continuously learning and growing as a professional.
-    </p>
-  </section>
+        <!-- Navigation Bar -->
+        <header class="mb-8">
+            <!-- ADDED: main-nav class to target for pink color -->
+            <nav class="flex justify-center py-4 main-nav"> 
+                <!-- REMOVED: text-gray-700. Now uses .main-nav CSS rule for pink color -->
+                <a href="#about" class="text-lg font-medium hover:opacity-75 mx-3 transition-colors">About</a>
+                <a href="#skills" class="text-lg font-medium hover:opacity-75 mx-3 transition-colors">Skills</a>
+                <a href="#projects" class="text-lg font-medium hover:opacity-75 mx-3 transition-colors">Projects</a>
+                <a href="#experience" class="text-lg font-medium hover:opacity-75 mx-3 transition-colors">Experience</a>
+                <a href="#contact" class="text-lg font-medium hover:opacity-75 mx-3 transition-colors">Contact</a>
+            </nav>
+        </header>
 
-  <section id="skills">
-    <h2>Skills</h2>
-    <ul>
-      <li><strong>Technical:</strong> HTML, CSS, JavaScript, Python, Java, SQL, Basics of Cryptography & Information Security</li>
-      <li><strong>Soft Skills:</strong> Public Speaking, Photography & Creative Thinking</li>
-    </ul>
-  </section>
+        <!-- Profile Section (White Card) -->
+        <section id="profile" class="hero-card"> <!-- Updated class from hero-dark-card -->
+            <div class="hero-avatar-wrapper">
+                <!-- 
+                    IMPORTANT: Add your image here! 
+                    Replace 'your_picture.jpg' with your image file path or a direct URL.
+                -->
+                <img id="avatar-img" 
+                     src="profile.jpeg" 
+                     alt="Profile Picture" 
+                     class="w-full h-full object-cover rounded-full">
+            </div>
+            <div class="hero-text">
+                <!-- Name is now pink and italic via .hero-name CSS -->
+                <h1 class="hero-name">Rubina Fathima R</h1>
+                <p class="hero-tagline">Cybersecurity Enthusiast | Tech Explorer | Creative Learner</p>
+            </div>
+            <!-- REMOVED: The hero-bow-icon (pink box with sparkle) -->
+        </section>
 
-  <section id="projects">
-    <h2>Projects</h2>
-    <ul>
-      <li><strong>Fake Internship Detector (Ongoing):</strong> Developing a system to identify fraudulent internship postings</li>
-    </ul>
-  </section>
+        <!-- About Me Section (White Card) -->
+        <section id="about" class="card-wrapper">
+            <h2 class="pink-title">About Me</h2>
+            <p class="text-gray-700 text-lg leading-relaxed">
+                I am a cybersecurity student with a strong interest in technology, problem-solving, and digital security.
+                Beyond academics, I enjoy exploring creative outlets like public speaking and photography, which help me
+                bring a unique perspective to my technical journey.
+            </p>
+        </section>
 
-  <section id="experience">
-    <h2>Experience</h2>
-    <ul>
-      <li><strong>Host:</strong> Into the Void, National-level Capture the Flag (CTF) conducted by ExploitX</li>
-      <li><strong>Organizer:</strong> HackNode India Bootcamp</li>
-      <li><strong>Workshop Conductor:</strong> Led a cybersecurity workshop with ExploitX</li>
-    </ul>
-  </section>
+        <!-- Skills Section (White Card) -->
+        <section id="skills" class="card-wrapper">
+            <h2 class="pink-title">Skills</h2>
+            <div class="mb-6">
+                <h3 class="text-xl font-semibold mb-3">Technical Skills</h3>
+                <div id="technical-skills-container" class="flex flex-wrap gap-2">
+                    <!-- Skills will be dynamically populated by JavaScript -->
+                </div>
+            </div>
+            <div>
+                <h3 class="text-xl font-semibold mb-3">Soft Skills</h3>
+                <div id="soft-skills-container" class="flex flex-wrap gap-2">
+                    <!-- Skills will be dynamically populated by JavaScript -->
+                </div>
+            </div>
+        </section>
 
-  <section id="contact" class="contact">
-    <h2>Contact</h2>
-    <a href="#">Email: rubinafathima.academia@gmail.com</a>
-    <a href="#">LinkedIn: Rubina Fathima R</a>
-    <a href="#">GitHub: RubinaFathimaR</a>
-  </section>
+        <!-- Projects Section (White Card) -->
+        <section id="projects" class="card-wrapper">
+            <h2 class="pink-title">Projects</h2>
+            <div id="projects-container" class="space-y-4">
+                <!-- Projects will be dynamically populated by JavaScript -->
+            </div>
+        </section>
 
-  <footer>
-    <p>© 2025 [Rubina Fathima]</p>
-  </footer>
+        <!-- Experience Section (White Card) -->
+        <section id="experience" class="card-wrapper">
+            <h2 class="pink-title">Experience</h2>
+            <div id="experience-container" class="space-y-4">
+                <!-- Experience items will be dynamically populated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Contact Section (White Card) -->
+        <section id="contact" class="card-wrapper text-center">
+            <h2 class="pink-title">Contact</h2>
+            <div class="flex justify-center mt-6">
+                
+                <!-- Email Contact - Copies email to clipboard -->
+                <a href="#" class="contact-icon-wrapper" id="email-contact">
+                    <div class="contact-icon-circle">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <p class="text-gray-700 text-sm">Email</p>
+                </a>
+                
+                <!-- LinkedIn Contact - Redirects to profile -->
+                <a href="#" target="_blank" class="contact-icon-wrapper" id="linkedin-contact">
+                    <div class="contact-icon-circle">
+                        <i class="fab fa-linkedin-in"></i>
+                    </div>
+                    <p class="text-gray-700 text-sm">LinkedIn</p>
+                </a>
+                
+                <!-- GitHub Contact - Redirects to profile -->
+                <a href="#" target="_blank" class="contact-icon-wrapper" id="github-contact">
+                    <div class="contact-icon-circle">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <p class="text-gray-700 text-sm">GitHub</p>
+                </a>
+            </div>
+            <!-- Message to show when email is copied -->
+            <p id="copy-status" class="mt-4 text-pink-primary hidden font-semibold">Email copied to clipboard!</p>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center py-8 text-gray-600 text-sm">
+            <p>&copy; <span id="current-year"></span> Rubina Fathima R. All rights reserved.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        // --- 1. PORTFOLIO DATA (JSON replaced by JavaScript Object) ---
+        const portfolioData = {
+            "technicalSkills": [
+                "HTML", "CSS", "JavaScript", "Python", "Java", "SQL", "Cryptography", "Network Security", "Penetration Testing"
+            ],
+            "softSkills": [
+                "Public Speaking", "Creative Thinking", "Team Leadership", "Problem-Solving", "Client Communication"
+            ],
+            "projects": [
+                {
+                    "title": "Fake Internship Detector",
+                    "description": "Developing a project to identify fraudulent internship postings(Ongoing).",
+                    "url": "#"
+                }
+            ],
+            "experience": [
+                {
+                    "role": "Host",
+                    "description": "Hosted 'Into The Void,' a National-level Capture the Flag (CTF) competition conducted by ExploitX."
+                },
+                {
+                    "role": "Organizer",
+                    "description": "Co-organized and hosted the HackNode India Bootcamp."
+                },
+                {
+                    "role": "Workshop Conductor",
+                    "description": "Led a workshop with ExploitX."
+                }
+            ],
+            "contact": {
+                "email": "rubinafathima.academia@gmail.com",
+                "linkedin": "https://www.linkedin.com/in/rubina-fathima-r-58480b32a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+                "github": "https://github.com/RubinaFathimaR"
+            }
+        };
+
+        // --- 2. CONTACT HANDLER FUNCTION ---
+        function handleContactClick(type, value) {
+            // Prevent the default link behavior
+            event.preventDefault(); 
+            
+            if (type === 'email') {
+                // Copy email to clipboard
+                navigator.clipboard.writeText(value).then(() => {
+                    const status = document.getElementById('copy-status');
+                    
+                    // Show the success message
+                    status.textContent = `Email "${value}" copied to clipboard!`;
+                    status.classList.remove('hidden');
+                    
+                    // Hide the message after 2.5 seconds
+                    setTimeout(() => {
+                        status.classList.add('hidden');
+                    }, 2500);
+                }).catch(err => {
+                    // Log error if copy fails (e.g., in a secure context)
+                    console.error('Could not copy text: ', err);
+                });
+            } else if (type === 'linkedin' || type === 'github') {
+                // Open the link in a new tab
+                window.open(value, '_blank'); 
+            }
+        }
+
+        // --- 3. RENDERING FUNCTION ---
+        function renderPortfolioSections() {
+            const data = portfolioData;
+
+            // Helper to render skills
+            const renderSkills = (containerId, skillsArray) => {
+                const container = document.getElementById(containerId);
+                if (container) {
+                    container.innerHTML = skillsArray.map(skill => 
+                        `<span class="skill-tag">${skill}</span>`
+                    ).join('');
+                }
+            };
+            
+            // Render Technical and Soft Skills
+            renderSkills('technical-skills-container', data.technicalSkills);
+            renderSkills('soft-skills-container', data.softSkills);
+
+            // Render Projects
+            const projectsContainer = document.getElementById('projects-container');
+            if (projectsContainer) {
+                projectsContainer.innerHTML = data.projects.map(project => `
+                    <div class="bg-white p-5 rounded-lg shadow-sm border border-pink-card-border hover:shadow-md hover:border-pink-primary transition-all-200 cursor-pointer">
+                        <h3 class="text-xl font-semibold text-gray-800">${project.title}</h3>
+                        <p class="text-gray-600 mt-1">${project.description}</p>
+                    </div>
+                `).join('');
+            }
+
+            // Render Experience
+            const experienceContainer = document.getElementById('experience-container');
+            if (experienceContainer) {
+                experienceContainer.innerHTML = data.experience.map(item => `
+                    <div class="bg-white p-5 rounded-lg shadow-sm border border-pink-card-border hover:shadow-md hover:border-pink-primary transition-all-200">
+                        <h3 class="text-xl font-semibold text-gray-800">${item.role}</h3>
+                        <p class="text-gray-600 mt-1">${item.description}</p>
+                    </div>
+                `).join('');
+            }
+
+            // Set up Contact links with the handler function
+            document.getElementById('email-contact').addEventListener('click', (event) => {
+                handleContactClick('email', data.contact.email);
+            });
+            document.getElementById('linkedin-contact').addEventListener('click', (event) => {
+                handleContactClick('linkedin', data.contact.linkedin);
+            });
+            document.getElementById('linkedin-contact').href = data.contact.linkedin;
+            
+            document.getElementById('github-contact').addEventListener('click', (event) => {
+                handleContactClick('github', data.contact.github);
+            });
+            document.getElementById('github-contact').href = data.contact.github;
+
+        }
+
+        // --- 4. INITIALIZATION ---
+        document.addEventListener('DOMContentLoaded', () => {
+            renderPortfolioSections();
+            // Set current year in footer
+            const currentYearElement = document.getElementById('current-year');
+            if (currentYearElement) {
+                currentYearElement.textContent = new Date().getFullYear();
+            }
+        });
+    </script>
 </body>
 </html>
+
+
